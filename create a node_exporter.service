@@ -1,0 +1,20 @@
+sudo su
+echo '[Unit]
+Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/data/node_exporter-1.8.2.linux-amd64/./node_exporter --web.listen-address=0.0.0.0:9500
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target' >> /etc/systemd/system/node_exporter.service
+cd /etc/systemd/system/
+chmod 755 node_exporter.service
+systemctl start node_exporter.service
+systemctl enable node_exporter.service
+systemctl status node_exporter.service
