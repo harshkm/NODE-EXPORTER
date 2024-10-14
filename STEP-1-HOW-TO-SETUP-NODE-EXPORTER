@@ -1,11 +1,14 @@
-cd /opt/
+# IN THIS MODULE YOU'LL LEARN HOW TO SET UP A "NODE EXPORTER" TO GET THE SYSTEM METRICS IN PROMETHEUS
+# FAIRLY EASY JUST COPY AND PASTE THE BELOW COMMANDS. MAKE SURE YOU HAVE INTERNET CONNECTIVITY.
+
+sudo su
+mkdir /data
+cd /data/.
 wget https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_exporter-1.8.2.linux-amd64.tar.gz
 tar -zxvf node_exporter-1.8.2.linux-amd64.tar.gz
-mv node_exporter-1.8.2.linux-amd64.tar.gz /home/harsh_mahour_ril_com/.
 cd node_exporter-1.8.2.linux-amd64/
 nohup ./node_exporter --web.listen-address=0.0.0.0:9500 &
 
-
-sudo su 
-cd /opt/
-mv node_exporter-1.8.2.linux-amd64 /data/.
+# YOUR NODE EXPOTER WILL BE UP AND RUNNING
+# 9500 IS THE PORT THAT YOU'LL NEED TO EXPOSE TO PROMETHEUS.
+# IF THIS IS IN USE YOU CAN US ANY OTHER PORT THAT YOU FIND SUITABLE.
